@@ -1,2 +1,9 @@
+[build]
+  builder = "node"
+
 [deploy]
-start = "npm install && npm start"
+  start = "npm start"
+
+[env]
+  TELEGRAM_BOT_TOKEN = "8038361224:AAGjufRLRbxKb2z7IslfBTsnlHo97JTOMMQ"
+  TELEGRAM_CHAT_ID = "1276928573"
