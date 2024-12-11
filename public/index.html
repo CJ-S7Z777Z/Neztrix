@@ -16,6 +16,9 @@
             box-sizing: border-box;
             scroll-behavior: smooth;
         }
+        .logo img{
+            width: 200px;
+        }
 
         body {
             font-family: 'Roboto', sans-serif;
@@ -71,37 +74,7 @@
             color: #1abc9c;
         }
 
-        /* Подменю */
-        nav ul li .submenu {
-            display: none;
-            position: absolute;
-            top: 35px;
-            left: 0;
-            background-color: #2a2a2a;
-            padding: 10px 0;
-            border-radius: 5px;
-            min-width: 150px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-        }
 
-        nav ul li:hover .submenu {
-            display: block;
-        }
-
-        nav ul li .submenu li {
-            margin: 0;
-        }
-
-        nav ul li .submenu li a {
-            padding: 10px 20px;
-            display: block;
-            font-size: 0.9em;
-        }
-
-        nav ul li .submenu li a:hover {
-            background-color: #1abc9c;
-            color: #121212;
-        }
 
         /* Главные секции */
         main {
@@ -567,16 +540,13 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Мои Проекты</div>
+            <div class="logo">
+                <img src="logo.png" alt="Логотип" />
+            </div>
+            
             <ul>
                 <li><a href="#home">Главная</a></li>
-                <li>
-                    <a href="#projects">Проекты <i class="fas fa-caret-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="#it">IT</a></li>
-                        <li><a href="#web3">Web3</a></li>
-                    </ul>
-                </li>
+                <li><a href="#projects">Проекты</a></li>
                 <li><a href="#about">Обо мне</a></li>
                 <li><a href="#contact">Контакты</a></li>
             </ul>
@@ -587,7 +557,7 @@
         <!-- Главная секция -->
         <section id="home">
             <h1>Добро пожаловать!</h1>
-            <p>Я занимаюсь разработкой IT и Web3 проектов. Ознакомьтесь с моими работами и достижениями.</p>
+            <p>Я занимаюсь разработкой IT и Web3 проектов. Здесь вы можете ознакомиться с моими проектами.</p>
         </section>
 
         <!-- Проекты -->
@@ -597,9 +567,9 @@
             <div id="it" class="projects-container">
                 <!-- IT Проект 1 -->
                 <div class="project-card" data-project="it1">
-                    <img src="https://source.unsplash.com/400x300/?technology,1" alt="IT Проект 1">
-                    <h3>IT Проект 1</h3>
-                    <p>Описание IT проекта 1. Подробнее о функциях и технологиях.</p>
+                    <img src="Frame 14.png" alt="IT Проект 1">
+                    <h3>Telegram бот для скачивания видео</h3>
+                    <p></p>
                 </div>
                 <!-- IT Проект 2 -->
                 <div class="project-card" data-project="it2">
@@ -705,12 +675,10 @@
     <!-- Футер -->
     <footer>
         <div class="socials">
-            <a href="https://github.com/yourprofile" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/yourprofile" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://t.me/yourtelegram" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://github.com/CJ-S7Z777Z" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://t.me/mwii_boss" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
         </div>
-        <p>© 2024 Мои Проекты. Все права защищены.</p>
+        <p>© 2024 Neztrix. Все права защищены.</p>
     </footer>
 
     <!-- Модальные окна для проектов -->
@@ -720,27 +688,20 @@
             <span class="close">&times;</span>
             <h3>IT Проект 1</h3>
             <div class="modal-details">
+                <div class="modal-gallery">
+                    <img src="https://source.unsplash.com/400x300/?technology,1" alt="IT Проект 1">
+                    <img src="https://source.unsplash.com/400x300/?technology,2" alt="IT Проект 1">
+                    <img src="https://source.unsplash.com/400x300/?technology,3" alt="IT Проект 1">
+                </div>
                 <ul>
-                    <li><strong>Имя:</strong> IT Проект 1</li>
-                    <li><strong>Username в Telegram:</strong> @project1</li>
-                    <li><strong>Бюджет:</strong> Менее $1000</li>
-                    <li><strong>Номер телефона:</strong> +7 (123) 456-78-90</li>
-                    <li><strong>Есть ТЗ:</strong> Да</li>
+                    <li><strong>Цена:</strong> $1000</li>
+                    <li><strong>Сроки:</strong> 2 месяца</li>
+                    <li><strong>Файл ТЗ:</strong> <a href="#" download>Скачать</a></li>
+                    <li><strong>Количество правок:</strong> 3</li>
+                    <li><strong>Под ключ:</strong> Да</li>
                 </ul>
             </div>
             <p>Подробное описание IT Проекта 1. Здесь вы можете добавить информацию о технологиях, функциях и особенностях проекта.</p>
-            <div class="modal-gallery">
-                <img src="https://source.unsplash.com/400x300/?technology,1" alt="IT Проект 1">
-                <img src="https://source.unsplash.com/400x300/?technology,2" alt="IT Проект 1">
-                <img src="https://source.unsplash.com/400x300/?technology,3" alt="IT Проект 1">
-            </div>
-            <ul>
-                <li><strong>Цена:</strong> $1000</li>
-                <li><strong>Сроки:</strong> 2 месяца</li>
-                <li><strong>Файл ТЗ:</strong> <a href="#" download>Скачать</a></li>
-                <li><strong>Количество правок:</strong> 3</li>
-                <li><strong>Под ключ:</strong> Да</li>
-            </ul>
         </div>
     </div>
 
@@ -750,27 +711,20 @@
             <span class="close">&times;</span>
             <h3>IT Проект 2</h3>
             <div class="modal-details">
+                <div class="modal-gallery">
+                    <img src="https://source.unsplash.com/400x300/?technology,1" alt="IT Проект 1">
+                    <img src="https://source.unsplash.com/400x300/?technology,2" alt="IT Проект 1">
+                    <img src="https://source.unsplash.com/400x300/?technology,3" alt="IT Проект 1">
+                </div>
                 <ul>
-                    <li><strong>Имя:</strong> IT Проект 2</li>
-                    <li><strong>Username в Telegram:</strong> @project2</li>
-                    <li><strong>Бюджет:</strong> $5000 - $10000</li>
-                    <li><strong>Номер телефона:</strong> +7 (123) 456-78-90</li>
-                    <li><strong>Есть ТЗ:</strong> Нет</li>
+                    <li><strong>Цена:</strong> $1000</li>
+                    <li><strong>Сроки:</strong> 2 месяца</li>
+                    <li><strong>Файл ТЗ:</strong> <a href="#" download>Скачать</a></li>
+                    <li><strong>Количество правок:</strong> 3</li>
+                    <li><strong>Под ключ:</strong> Да</li>
                 </ul>
             </div>
-            <p>Подробное описание IT Проекта 2. Здесь вы можете добавить информацию о технологиях, функциях и особенностях проекта.</p>
-            <div class="modal-gallery">
-                <img src="https://source.unsplash.com/400x300/?technology,4" alt="IT Проект 2">
-                <img src="https://source.unsplash.com/400x300/?technology,5" alt="IT Проект 2">
-                <img src="https://source.unsplash.com/400x300/?technology,6" alt="IT Проект 2">
-            </div>
-            <ul>
-                <li><strong>Цена:</strong> $1500</li>
-                <li><strong>Сроки:</strong> 3 месяца</li>
-                <li><strong>Файл ТЗ:</strong> Нет</li>
-                <li><strong>Количество правок:</strong> 5</li>
-                <li><strong>Под ключ:</strong> Нет</li>
-            </ul>
+            <p>Подробное описание IT Проекта 1. Здесь вы можете добавить информацию о технологиях, функциях и особенностях проекта.</p>
         </div>
     </div>
 
@@ -780,27 +734,20 @@
             <span class="close">&times;</span>
             <h3>Web3 Проект 1</h3>
             <div class="modal-details">
+                <div class="modal-gallery">
+                    <img src="https://source.unsplash.com/400x300/?technology,1" alt="IT Проект 1">
+                    <img src="https://source.unsplash.com/400x300/?technology,2" alt="IT Проект 1">
+                    <img src="https://source.unsplash.com/400x300/?technology,3" alt="IT Проект 1">
+                </div>
                 <ul>
-                    <li><strong>Имя:</strong> Web3 Проект 1</li>
-                    <li><strong>Username в Telegram:</strong> @web3project1</li>
-                    <li><strong>Бюджет:</strong> $5000 - $10000</li>
-                    <li><strong>Номер телефона:</strong> +7 (123) 456-78-90</li>
-                    <li><strong>Есть ТЗ:</strong> Да</li>
+                    <li><strong>Цена:</strong> $1000</li>
+                    <li><strong>Сроки:</strong> 2 месяца</li>
+                    <li><strong>Файл ТЗ:</strong> <a href="#" download>Скачать</a></li>
+                    <li><strong>Количество правок:</strong> 3</li>
+                    <li><strong>Под ключ:</strong> Да</li>
                 </ul>
             </div>
-            <p>Подробное описание Web3 Проекта 1. Здесь вы можете добавить информацию о технологиях, функциях и особенностях проекта.</p>
-            <div class="modal-gallery">
-                <img src="https://source.unsplash.com/400x300/?blockchain,3" alt="Web3 Проект 1">
-                <img src="https://source.unsplash.com/400x300/?blockchain,4" alt="Web3 Проект 1">
-                <img src="https://source.unsplash.com/400x300/?blockchain,5" alt="Web3 Проект 1">
-            </div>
-            <ul>
-                <li><strong>Цена:</strong> $2000</li>
-                <li><strong>Сроки:</strong> 4 месяца</li>
-                <li><strong>Файл ТЗ:</strong> <a href="#" download>Скачать</a></li>
-                <li><strong>Количество правок:</strong> 4</li>
-                <li><strong>Под ключ:</strong> Да</li>
-            </ul>
+            <p>Подробное описание IT Проекта 1. Здесь вы можете добавить информацию о технологиях, функциях и особенностях проекта.</p>
         </div>
     </div>
 
@@ -810,27 +757,20 @@
             <span class="close">&times;</span>
             <h3>Web3 Проект 2</h3>
             <div class="modal-details">
+                <div class="modal-gallery">
+                    <img src="https://source.unsplash.com/400x300/?technology,1" alt="IT Проект 1">
+                    <img src="https://source.unsplash.com/400x300/?technology,2" alt="IT Проект 1">
+                    <img src="https://source.unsplash.com/400x300/?technology,3" alt="IT Проект 1">
+                </div>
                 <ul>
-                    <li><strong>Имя:</strong> Web3 Проект 2</li>
-                    <li><strong>Username в Telegram:</strong> @web3project2</li>
-                    <li><strong>Бюджет:</strong> $10000 - $20000</li>
-                    <li><strong>Номер телефона:</strong> +7 (123) 456-78-90</li>
-                    <li><strong>Есть ТЗ:</strong> Нет</li>
+                    <li><strong>Цена:</strong> $1000</li>
+                    <li><strong>Сроки:</strong> 2 месяца</li>
+                    <li><strong>Файл ТЗ:</strong> <a href="#" download>Скачать</a></li>
+                    <li><strong>Количество правок:</strong> 3</li>
+                    <li><strong>Под ключ:</strong> Да</li>
                 </ul>
             </div>
-            <p>Подробное описание Web3 Проекта 2. Здесь вы можете добавить информацию о технологиях, функциях и особенностях проекта.</p>
-            <div class="modal-gallery">
-                <img src="https://source.unsplash.com/400x300/?blockchain,6" alt="Web3 Проект 2">
-                <img src="https://source.unsplash.com/400x300/?blockchain,7" alt="Web3 Проект 2">
-                <img src="https://source.unsplash.com/400x300/?blockchain,8" alt="Web3 Проект 2">
-            </div>
-            <ul>
-                <li><strong>Цена:</strong> $2500</li>
-                <li><strong>Сроки:</strong> 5 месяцев</li>
-                <li><strong>Файл ТЗ:</strong> Нет</li>
-                <li><strong>Количество правок:</strong> 6</li>
-                <li><strong>Под ключ:</strong> Нет</li>
-            </ul>
+            <p>Подробное описание IT Проекта 1. Здесь вы можете добавить информацию о технологиях, функциях и особенностях проекта.</p>
         </div>
     </div>
 
