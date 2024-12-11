@@ -983,48 +983,48 @@
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-// Валидация сообщения
-const message = document.getElementById('message').value.trim();
-if (message.length < 15) {
-    alert('Сообщение должно содержать не менее 15 символов.');
-    return;
-}
+            // Получение введённых данных
+            const message = document.getElementById('message').value.trim();
+            if (message.length < 15) {
+                alert('Сообщение должно содержать не менее 15 символов.');
+                return;
+            }
 
-const formData = new FormData(contactForm);
+            const formData = new FormData(contactForm);
 
-try {
-    const response = await fetch('https://www.neztrix.ru/api/contact', { // Замените на ваш URL сервера
-        method: 'POST',
-        body: formData
-    });
+            try {
+                const response = await fetch('/api/contact', { // Отправка на тот же домен
+                    method: 'POST',
+                    body: formData
+                });
 
-    if (response.ok) {
-        // Показать успешное сообщение
-        contactFormContainer.style.display = 'none';
-        successMessage.classList.add('active');
+                if (response.ok) {
+                    // Показать успешное сообщение
+                    contactFormContainer.style.display = 'none';
+                    successMessage.classList.add('active');
 
-        // Таймер 5 секунд
-        setTimeout(() => {
-            successMessage.classList.remove('active');
-            window.location.href = '#home'; // Переместить на первую секцию
-            location.reload(); // Обновить страницу
-        }, 5000);
-    } else {
-        const errorText = await response.text();
-        alert(`Ошибка: ${errorText}`);
-    }
-} catch (error) {
-    console.error('Ошибка:', error);
-    alert('Произошла ошибка при отправке сообщения.');
-}
-});
+                    // Таймер 5 секунд
+                    setTimeout(() => {
+                        successMessage.classList.remove('active');
+                        window.location.href = '#home'; // Переместить на первую секцию
+                        location.reload(); // Обновить страницу
+                    }, 5000);
+                } else {
+                    const errorText = await response.text();
+                    alert(`Ошибка: ${errorText}`);
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Произошла ошибка при отправке сообщения.');
+            }
+        });
 
-// Заказ проекта
-const orderButton = document.getElementById('orderButton');
-orderButton.addEventListener('click', () => {
-alert('Функция заказа проекта будет доступна позже.');
-// Пример: прокрутка страницы до формы заказа или перенаправление
-});
+        // Заказ проекта
+        const orderButton = document.getElementById('orderButton');
+        orderButton.addEventListener('click', () => {
+            alert('Функция заказа проекта будет доступна позже.');
+            // Пример: прокрутка страницы до формы заказа или перенаправление
+        });
 </script>
 </body>
 </html>
