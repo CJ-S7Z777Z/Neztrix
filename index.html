@@ -1,1 +1,1030 @@
-i
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои Проекты</title>
+    <!-- Подключение Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Подключение Font Awesome для иконок социальных сетей -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Хедер */
+        header {
+            position: fixed;
+            width: 100%;
+            background-color: #1f1f1f;
+            padding: 15px 30px;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #1abc9c;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            position: relative;
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #1abc9c;
+        }
+
+        /* Подменю */
+        nav ul li .submenu {
+            display: none;
+            position: absolute;
+            top: 35px;
+            left: 0;
+            background-color: #2a2a2a;
+            padding: 10px 0;
+            border-radius: 5px;
+            min-width: 150px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        nav ul li:hover .submenu {
+            display: block;
+        }
+
+        nav ul li .submenu li {
+            margin: 0;
+        }
+
+        nav ul li .submenu li a {
+            padding: 10px 20px;
+            display: block;
+            font-size: 0.9em;
+        }
+
+        nav ul li .submenu li a:hover {
+            background-color: #1abc9c;
+            color: #121212;
+        }
+
+        /* Главные секции */
+        main {
+            padding-top: 80px; /* Высота хедера */
+        }
+
+        section {
+            padding: 60px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            background-color: #1e1e1e;
+        }
+
+        section h1, section h2 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 2.5em;
+            position: relative;
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        section p {
+            max-width: 800px;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+        }
+
+        /* Проекты */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer; /* Курсор рука */
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            background-color: #1abc9c;
+            color: #121212;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+            pointer-events: none; /* Чтобы курсор рука работал при наведении на изображение */
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-card h3 {
+            margin-bottom: 15px;
+            color: inherit;
+        }
+
+        .project-card p {
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        /* Анимация */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Футер */
+        footer {
+            background-color: #1f1f1f;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        footer .socials {
+            margin-bottom: 15px;
+        }
+
+        footer .socials a {
+            color: #ccc;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        footer .socials a:hover {
+            color: #1abc9c;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        /* Модальные окна */
+        .modal {
+            display: none; /* Скрыто по умолчанию */
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            position: relative;
+            animation: fadeInUp 0.5s ease forwards;
+            color: #fff;
+        }
+
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 2em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #fff;
+        }
+
+        .modal-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .modal-gallery img {
+            width: 100%;
+            max-width: 120px;
+            height: auto;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .modal-gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .modal-details {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .modal-details ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .modal-details ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Галерея изображений (Lightbox) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-close:focus {
+            color: #bbb;
+        }
+
+        /* Форма контактов */
+        .contact-form {
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+        }
+
+        .contact-form.success {
+            display: none;
+        }
+
+        .contact-form h3 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1abc9c;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .contact-form .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-form .form-group input,
+        .contact-form .form-group textarea,
+        .contact-form .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #1e1e1e;
+            color: #fff;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form .form-group input:focus,
+        .contact-form .form-group textarea:focus,
+        .contact-form .form-group select:focus {
+            border-color: #1abc9c;
+        }
+
+        .contact-form .form-group input[type="file"] {
+            display: none;
+        }
+
+        .contact-form .form-group .custom-file-upload {
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #1abc9c;
+            color: #121212;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form .form-group .custom-file-upload:hover {
+            background-color: #17a589;
+        }
+
+        .contact-form .form-group .file-name {
+            margin-left: 10px;
+            color: #ccc;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1abc9c;
+            color: #121212;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #17a589;
+        }
+
+        /* Заказать проект */
+        .order-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .order-section button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1abc9c;
+            color: #121212;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .order-section button:hover {
+            background-color: #17a589;
+            transform: scale(1.05);
+        }
+
+        /* Заказ формы для будущей разработки */
+        .order-form {
+            display: none; /* Для будущей разработки */
+            margin-top: 30px;
+        }
+
+        /* Успешное сообщение */
+        .success-message {
+            display: none;
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+        }
+
+        .success-message.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .success-message .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: inline-block;
+            border: 5px solid #1abc9c;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .success-message .checkmark::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 35px;
+            width: 20px;
+            height: 40px;
+            border: solid #1abc9c;
+            border-width: 0 5px 5px 0;
+            transform: rotate(45deg);
+        }
+
+        .success-message p {
+            font-size: 1.2em;
+            color: #1abc9c;
+        }
+
+        /* Курсор рука для всех кликабельных элементов */
+        button, .project-card, .close, .lightbox-close, .custom-file-upload {
+            cursor: pointer;
+        }
+
+        /* Анимация фона с помощью Canvas */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Медиа запросы для навигации */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            nav ul li .submenu {
+                position: static;
+            }
+
+            nav ul li .submenu li a {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Мои Проекты</div>
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li>
+                    <a href="#projects">Проекты <i class="fas fa-caret-down"></i></a>
+                    <ul class="submenu">
+                        <li><a href="#it">IT</a></li>
+                        <li><a href="#web3">Web3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Главная секция -->
+        <section id="home">
+            <h1>Добро пожаловать!</h1>
+            <p>Я занимаюсь разработкой IT и Web3 проектов. Ознакомьтесь с моими работами и достижениями.</p>
+        </section>
+
+        <!-- Проекты -->
+        <section id="projects">
+            <h2>Мои Проекты</h2>
+            <!-- IT Проекты -->
+            <div id="it" class="projects-container">
+                <!-- IT Проект 1 -->
+                <div class="project-card" data-project="it1">
+                    <img src="https://source.unsplash.com/400x300/?technology,1" alt="IT Проект 1">
+                    <h3>IT Проект 1</h3>
+                    <p>Описание IT проекта 1. Подробнее о функциях и технологиях.</p>
+                </div>
+                <!-- IT Проект 2 -->
+                <div class="project-card" data-project="it2">
+                    <img src="https://source.unsplash.com/400x300/?technology,2" alt="IT Проект 2">
+                    <h3>IT Проект 2</h3>
+                    <p>Описание IT проекта 2. Подробнее о функциях и технологиях.</p>
+                </div>
+                <!-- Добавьте больше IT проектов по необходимости -->
+            </div>
+            <!-- Web3 Проекты -->
+            <div id="web3" class="projects-container" style="margin-top: 50px;">
+                <!-- Web3 Проект 1 -->
+                <div class="project-card" data-project="web31">
+                    <img src="https://source.unsplash.com/400x300/?blockchain,1" alt="Web3 Проект 1">
+                    <h3>Web3 Проект 1</h3>
+                    <p>Описание Web3 проекта 1. Подробнее о функциях и технологиях.</p>
+                </div>
+                <!-- Web3 Проект 2 -->
+                <div class="project-card" data-project="web32">
+                    <img src="https://source.unsplash.com/400x300/?blockchain,2" alt="Web3 Проект 2">
+                    <h3>Web3 Проект 2</h3>
+                    <p>Описание Web3 проекта 2. Подробнее о функциях и технологиях.</p>
+                </div>
+                <!-- Добавьте больше Web3 проектов по необходимости -->
+            </div>
+        </section>
+
+        <!-- Обо мне -->
+        <section id="about">
+            <h2>Обо мне</h2>
+            <p>Краткая информация о вашем опыте, навыках и достижениях. Опишите, чем вы занимаетесь, ваши цели и интересы в сфере IT и Web3.</p>
+        </section>
+
+        <!-- Контакты -->
+        <section id="contact">
+            <h2>Контакты</h2>
+            <p>Свяжитесь со мной через следующие платформы или используйте форму ниже:</p>
+            <div class="contact-form" id="contactFormContainer">
+                <h3>Отправить сообщение</h3>
+                <form id="contactForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                    </div>
+                    <div class="form-group">
+                        <label for="telegram">Username в Telegram</label>
+                        <input type="text" id="telegram" name="telegram" required placeholder="Введите ваш Username в Telegram">
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Бюджет</label>
+                        <select id="budget" name="budget" required>
+                            <option value="" disabled selected>Выберите ваш бюджет</option>
+                            <option value="Менее $1000">Менее $1000</option>
+                            <option value="$1000 - $5000">$1000 - $5000</option>
+                            <option value="$5000 - $10000">$5000 - $10000</option>
+                            <option value="Более $10000">Более $10000</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Номер телефона</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Введите ваш номер телефона">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Введите ваше сообщение (не менее 15 символов)"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="hasTz">Есть ТЗ?</label>
+                        <select id="hasTz" name="hasTz" required>
+                            <option value="" disabled selected>Выберите</option>
+                            <option value="yes">Да</option>
+                            <option value="no">Нет</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="fileUploadGroup" style="display: none;">
+                        <label for="file">Прикрепить файл ТЗ</label><br>
+                        <label class="custom-file-upload">
+                            <i class="fas fa-upload"></i> Выбрать файл
+                            <input type="file" id="file" name="file">
+                        </label>
+                        <span id="fileName" class="file-name">Файл не выбран</span>
+                    </div>
+                    <button type="submit">Отправить</button>
+                </form>
+            </div>
+            <!-- Успешное сообщение -->
+            <div class="success-message" id="successMessage">
+                <div class="checkmark"></div>
+                <p>Заявка успешно отправлена!</p>
+            </div>
+            <!-- Заказать проект -->
+            <div class="order-section">
+                <p>Хотите заказать разработку собственного проекта?</p>
+                <button id="orderButton">Заказать проект</button>
+            </div>
+            <!-- Заказ формы для будущей разработки -->
+            <div class="order-form">
+                <!-- Placeholder for future development -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <div class="socials">
+            <a href="https://github.com/yourprofile" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/yourprofile" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://t.me/yourtelegram" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+        </div>
+        <p>© 2024 Мои Проекты. Все права защищены.</p>
+    </footer>
+
+    <!-- Модальные окна для проектов -->
+    <!-- IT Проект 1 -->
+    <div id="it1Modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>IT Проект 1</h3>
+            <div class="modal-details">
+                <ul>
+                    <li><strong>Имя:</strong> IT Проект 1</li>
+                    <li><strong>Username в Telegram:</strong> @project1</li>
+                    <li><strong>Бюджет:</strong> Менее $1000</li>
+                    <li><strong>Номер телефона:</strong> +7 (123) 456-78-90</li>
+                    <li><strong>Есть ТЗ:</strong> Да</li>
+                </ul>
+            </div>
+            <p>Подробное описание IT Проекта 1. Здесь вы можете добавить информацию о технологиях, функциях и особенностях проекта.</p>
+            <div class="modal-gallery">
+                <img src="https://source.unsplash.com/400x300/?technology,1" alt="IT Проект 1">
+                <img src="https://source.unsplash.com/400x300/?technology,2" alt="IT Проект 1">
+                <img src="https://source.unsplash.com/400x300/?technology,3" alt="IT Проект 1">
+            </div>
+            <ul>
+                <li><strong>Цена:</strong> $1000</li>
+                <li><strong>Сроки:</strong> 2 месяца</li>
+                <li><strong>Файл ТЗ:</strong> <a href="#" download>Скачать</a></li>
+                <li><strong>Количество правок:</strong> 3</li>
+                <li><strong>Под ключ:</strong> Да</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- IT Проект 2 -->
+    <div id="it2Modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>IT Проект 2</h3>
+            <div class="modal-details">
+                <ul>
+                    <li><strong>Имя:</strong> IT Проект 2</li>
+                    <li><strong>Username в Telegram:</strong> @project2</li>
+                    <li><strong>Бюджет:</strong> $5000 - $10000</li>
+                    <li><strong>Номер телефона:</strong> +7 (123) 456-78-90</li>
+                    <li><strong>Есть ТЗ:</strong> Нет</li>
+                </ul>
+            </div>
+            <p>Подробное описание IT Проекта 2. Здесь вы можете добавить информацию о технологиях, функциях и особенностях проекта.</p>
+            <div class="modal-gallery">
+                <img src="https://source.unsplash.com/400x300/?technology,4" alt="IT Проект 2">
+                <img src="https://source.unsplash.com/400x300/?technology,5" alt="IT Проект 2">
+                <img src="https://source.unsplash.com/400x300/?technology,6" alt="IT Проект 2">
+            </div>
+            <ul>
+                <li><strong>Цена:</strong> $1500</li>
+                <li><strong>Сроки:</strong> 3 месяца</li>
+                <li><strong>Файл ТЗ:</strong> Нет</li>
+                <li><strong>Количество правок:</strong> 5</li>
+                <li><strong>Под ключ:</strong> Нет</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Web3 Проект 1 -->
+    <div id="web31Modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Web3 Проект 1</h3>
+            <div class="modal-details">
+                <ul>
+                    <li><strong>Имя:</strong> Web3 Проект 1</li>
+                    <li><strong>Username в Telegram:</strong> @web3project1</li>
+                    <li><strong>Бюджет:</strong> $5000 - $10000</li>
+                    <li><strong>Номер телефона:</strong> +7 (123) 456-78-90</li>
+                    <li><strong>Есть ТЗ:</strong> Да</li>
+                </ul>
+            </div>
+            <p>Подробное описание Web3 Проекта 1. Здесь вы можете добавить информацию о технологиях, функциях и особенностях проекта.</p>
+            <div class="modal-gallery">
+                <img src="https://source.unsplash.com/400x300/?blockchain,3" alt="Web3 Проект 1">
+                <img src="https://source.unsplash.com/400x300/?blockchain,4" alt="Web3 Проект 1">
+                <img src="https://source.unsplash.com/400x300/?blockchain,5" alt="Web3 Проект 1">
+            </div>
+            <ul>
+                <li><strong>Цена:</strong> $2000</li>
+                <li><strong>Сроки:</strong> 4 месяца</li>
+                <li><strong>Файл ТЗ:</strong> <a href="#" download>Скачать</a></li>
+                <li><strong>Количество правок:</strong> 4</li>
+                <li><strong>Под ключ:</strong> Да</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Web3 Проект 2 -->
+    <div id="web32Modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Web3 Проект 2</h3>
+            <div class="modal-details">
+                <ul>
+                    <li><strong>Имя:</strong> Web3 Проект 2</li>
+                    <li><strong>Username в Telegram:</strong> @web3project2</li>
+                    <li><strong>Бюджет:</strong> $10000 - $20000</li>
+                    <li><strong>Номер телефона:</strong> +7 (123) 456-78-90</li>
+                    <li><strong>Есть ТЗ:</strong> Нет</li>
+                </ul>
+            </div>
+            <p>Подробное описание Web3 Проекта 2. Здесь вы можете добавить информацию о технологиях, функциях и особенностях проекта.</p>
+            <div class="modal-gallery">
+                <img src="https://source.unsplash.com/400x300/?blockchain,6" alt="Web3 Проект 2">
+                <img src="https://source.unsplash.com/400x300/?blockchain,7" alt="Web3 Проект 2">
+                <img src="https://source.unsplash.com/400x300/?blockchain,8" alt="Web3 Проект 2">
+            </div>
+            <ul>
+                <li><strong>Цена:</strong> $2500</li>
+                <li><strong>Сроки:</strong> 5 месяцев</li>
+                <li><strong>Файл ТЗ:</strong> Нет</li>
+                <li><strong>Количество правок:</strong> 6</li>
+                <li><strong>Под ключ:</strong> Нет</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Галерея изображений (Lightbox) -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
+
+    <!-- Canvas для анимации фона -->
+    <canvas id="bgCanvas"></canvas>
+
+    <script>
+        // Модальные окна
+        const modals = document.querySelectorAll('.modal');
+        const projectCards = document.querySelectorAll('.project-card');
+        const closeButtons = document.querySelectorAll('.close');
+
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const projectId = card.getAttribute('data-project') + 'Modal';
+                document.getElementById(projectId).style.display = 'block';
+            });
+        });
+
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modals.forEach(modal => modal.style.display = 'none');
+                document.getElementById('lightbox').style.display = 'none';
+            });
+        });
+
+        // Закрытие модальных окон при клике вне контента
+        window.addEventListener('click', (e) => {
+            modals.forEach(modal => {
+                if (e.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            const lightbox = document.getElementById('lightbox');
+            if (e.target == lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+        // Lightbox для галереи
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.querySelector('.lightbox-close');
+
+        document.querySelectorAll('.modal-gallery img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'block';
+                lightboxImg.src = img.src;
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        // Анимация фона с помощью Canvas
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        const particlesArray = [];
+        const numberOfParticles = 100;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particlesArray.length = 0;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.color = 'rgba(26, 188, 156, 0.7)';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > height || this.y < 0) this.speedY = -this.speedY;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(18, 18, 18, 0.05)';
+            ctx.fillRect(0, 0, width, height);
+            particlesArray.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Обработка формы контактов
+        const contactForm = document.getElementById('contactForm');
+        const fileInput = document.getElementById('file');
+        const fileNameSpan = document.getElementById('fileName');
+        const hasTz = document.getElementById('hasTz');
+        const fileUploadGroup = document.getElementById('fileUploadGroup');
+        const successMessage = document.getElementById('successMessage');
+        const contactFormContainer = document.getElementById('contactFormContainer');
+
+        hasTz.addEventListener('change', () => {
+            if (hasTz.value === 'yes') {
+                fileUploadGroup.style.display = 'block';
+            } else {
+                fileUploadGroup.style.display = 'none';
+                fileInput.value = '';
+                fileNameSpan.textContent = 'Файл не выбран';
+            }
+        });
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                fileNameSpan.textContent = fileInput.files[0].name;
+            } else {
+                fileNameSpan.textContent = 'Файл не выбран';
+            }
+        });
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+// Валидация сообщения
+const message = document.getElementById('message').value.trim();
+if (message.length < 15) {
+    alert('Сообщение должно содержать не менее 15 символов.');
+    return;
+}
+
+const formData = new FormData(contactForm);
+
+try {
+    const response = await fetch('http://www.neztrix.ru/api/contact', { // Замените на ваш URL сервера
+        method: 'POST',
+        body: formData
+    });
+
+    if (response.ok) {
+        // Показать успешное сообщение
+        contactFormContainer.style.display = 'none';
+        successMessage.classList.add('active');
+
+        // Таймер 5 секунд
+        setTimeout(() => {
+            successMessage.classList.remove('active');
+            window.location.href = '#home'; // Переместить на первую секцию
+            location.reload(); // Обновить страницу
+        }, 5000);
+    } else {
+        const errorText = await response.text();
+        alert(`Ошибка: ${errorText}`);
+    }
+} catch (error) {
+    console.error('Ошибка:', error);
+    alert('Произошла ошибка при отправке сообщения.');
+}
+});
+
+// Заказ проекта
+const orderButton = document.getElementById('orderButton');
+orderButton.addEventListener('click', () => {
+alert('Функция заказа проекта будет доступна позже.');
+// Пример: прокрутка страницы до формы заказа или перенаправление
+});
+</script>
+</body>
+</html>
