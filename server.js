@@ -5,6 +5,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
+const fs = require('fs');
 
 // Инициализация бота
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: false });
@@ -13,13 +14,13 @@ const app = express();
 
 // Настройка CORS
 app.use(cors({
-    origin: 'https://www.neztrix.ru/' // Замените '*' на домен вашего сайта для безопасности
+    origin: 'https://www.neztrix.ru', // Замените на ваш домен для безопасности
 }));
 
 // Настройка хранения файлов
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/') // Убедитесь, что папка "uploads" существует
+        cb(null, 'uploads/') // Папка для загрузок
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
@@ -30,7 +31,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Создание папки uploads, если она не существует
-const fs = require('fs');
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)){
     fs.mkdirSync(uploadsDir);
@@ -38,6 +38,7 @@ if (!fs.existsSync(uploadsDir)){
 
 // Функция для экранирования HTML
 const escapeHtml = (unsafe) => {
+    if (typeof unsafe !== 'string') return '';
     return unsafe
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -45,6 +46,9 @@ const escapeHtml = (unsafe) => {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 };
+
+// Обслуживание статических файлов из папки public
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Маршрут для обработки формы контактов
 app.post('/api/contact', upload.single('file'), async (req, res) => {
@@ -69,7 +73,7 @@ app.post('/api/contact', upload.single('file'), async (req, res) => {
     const safeMessage = escapeHtml(message);
     const safeHasTz = (hasTz === 'yes') ? 'Да' : 'Нет';
 
-    // Формирование сообщения
+    // Формирование текста сообщения
     let msg = `📩 <b>Новое сообщение с сайта</b>\n\n`;
     msg += `<b>Имя:</b> ${safeName}\n`;
     msg += `<b>Username в Telegram:</b> @${safeTelegram}\n`;
@@ -82,7 +86,7 @@ app.post('/api/contact', upload.single('file'), async (req, res) => {
         // Отправка текстового сообщения
         await bot.sendMessage(process.env.TELEGRAM_CHAT_ID, msg, { parse_mode: 'HTML' });
 
-        // Если файл прикреплён и есть ТЗ, отправляем его
+        // Отправка файла, если есть и ТЗ
         if (file && hasTz === 'yes') {
             const filePath = path.join(__dirname, file.path);
             await bot.sendDocument(process.env.TELEGRAM_CHAT_ID, filePath, {}, { filename: file.originalname });
